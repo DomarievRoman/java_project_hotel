@@ -1,15 +1,15 @@
-package com.domariev.entity;
+package com.domariev.model;
 
 import java.util.Objects;
 
 public class Hotel {
-    private int id;
+    private long id;
     private String name;
     private String address;
     private int rating;
     private String ownerName;
 
-    public Hotel(int id, String name, String address, int rating, String ownerName) {
+    public Hotel(long id, String name, String address, int rating, String ownerName) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -17,11 +17,14 @@ public class Hotel {
         this.ownerName = ownerName;
     }
 
-    public int getId() {
+    public Hotel() {
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

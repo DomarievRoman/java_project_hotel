@@ -1,17 +1,17 @@
-package com.domariev.entity;
+package com.domariev.model;
 
 import java.util.Objects;
 
 public class Room {
-    private int roomId;
+    private long roomId;
     private String roomType;
     private int amountOfSleepingPlaces;
     private int floor;
     private boolean isAvailable;
     private int price;
-    private int hotelId;
+    private long hotelId;
 
-    public Room(int roomId, String roomType, int amountOfSleepingPlaces, int floor, boolean isAvailable, int price, int hotelId) {
+    public Room(long roomId, String roomType, int amountOfSleepingPlaces, int floor, boolean isAvailable, int price, long hotelId) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.amountOfSleepingPlaces = amountOfSleepingPlaces;
@@ -21,11 +21,15 @@ public class Room {
         this.hotelId = hotelId;
     }
 
-    public int getRoomId() {
+    public Room() {
+
+    }
+
+    public long getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(long roomId) {
         this.roomId = roomId;
     }
 
@@ -69,11 +73,11 @@ public class Room {
         this.price = price;
     }
 
-    public int getHotelId() {
+    public long getHotelId() {
         return hotelId;
     }
 
-    public void setHotelId(int hotelId) {
+    public void setHotelId(long hotelId) {
         this.hotelId = hotelId;
     }
 
