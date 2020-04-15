@@ -15,7 +15,7 @@ public class DBConnector {
     public static final String DB_USER = "";
     public static final String DB_PASSWORD = "";
 
-    private final static Logger log = LogManager.getLogger(DBConnector.class);
+    private static final Logger log = LogManager.getLogger(DBConnector.class);
 
     public DBConnector() {
     }

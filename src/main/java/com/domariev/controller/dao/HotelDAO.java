@@ -10,9 +10,9 @@ public interface HotelDAO {
 
     List<Hotel> getAll() throws DAOException;
 
-    List<Hotel> getById(long id) throws DAOException;
+    Hotel getById(long id) throws DAOException;
 
-    void update(Hotel hotel);
+    boolean update(Hotel hotel);
 
-    void delete(long id) throws DAOException;
+    boolean delete(long id) throws DAOException;
 }

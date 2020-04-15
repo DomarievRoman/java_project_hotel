@@ -11,14 +11,14 @@ import java.sql.*;
 import java.util.List;
 
 public class DBTable extends DBConnector {
-    private static final String HOTEL_TABLE = "CREATE TABLE hotel(id long NOT NULL PRIMARY KEY, name varchar(255), address varchar(255)," +
+    private static final String HOTEL_TABLE = "CREATE TABLE hotel(id long NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255), address varchar(255)," +
             "rating int, ownerName varchar(255))";
-    private static final String EMPLOYEE_TABLE = "CREATE TABLE  employee(employeeId long NOT NULL PRIMARY KEY, nameSurname varchar(255)," +
+    private static final String EMPLOYEE_TABLE = "CREATE TABLE  employee(employeeId long NOT NULL AUTO_INCREMENT PRIMARY KEY, nameSurname varchar(255)," +
             "profession varchar(255), salary int, hotelId long, FOREIGN KEY(hotelId) REFERENCES hotel(id) ON DELETE CASCADE)";
-    private static final String ROOM_TABLE = "CREATE TABLE  room(roomId long NOT NULL PRIMARY KEY, roomType varchar(255), amountOfSleepingPlaces int, " +
+    private static final String ROOM_TABLE = "CREATE TABLE  room(roomId long NOT NULL AUTO_INCREMENT PRIMARY KEY, roomType varchar(255), amountOfSleepingPlaces int, " +
             "floor int, isAvailable boolean, price int, hotelId long, FOREIGN KEY(hotelId) REFERENCES hotel(id) ON DELETE CASCADE)";
 
-    private final static Logger log = LogManager.getLogger(DBTable.class);
+    private static final Logger log = LogManager.getLogger(DBTable.class);
 
     public DBTable() throws DAOException {
         initTables();
@@ -69,10 +69,10 @@ public class DBTable extends DBConnector {
         }
     }
 
-    private void closeStatementConnection(Statement Statement, Connection connection) {
-        if (Statement != null) {
+    private void closeStatementConnection(Statement statement, Connection connection) {
+        if (statement != null) {
             try {
-                Statement.close();
+                statement.close();
                 log.info("Statement closed");
             } catch (SQLException e) {
                 log.error("Cannot close Statement", e);
