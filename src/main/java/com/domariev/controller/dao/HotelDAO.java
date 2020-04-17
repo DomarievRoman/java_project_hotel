@@ -12,7 +12,7 @@ public interface HotelDAO {
 
     Hotel getById(long id) throws DAOException;
 
-    boolean update(Hotel hotel);
+    boolean update(Hotel hotel) throws DAOException;
 
     boolean delete(long id) throws DAOException;
 }

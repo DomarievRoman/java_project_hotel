@@ -9,6 +9,9 @@ public class Hotel {
     private int rating;
     private String ownerName;
 
+    public Hotel() {
+    }
+
     public Hotel(long id, String name, String address, int rating, String ownerName) {
         this.id = id;
         this.name = name;
@@ -17,7 +20,11 @@ public class Hotel {
         this.ownerName = ownerName;
     }
 
-    public Hotel() {
+    public Hotel(String name, String address, int rating, String ownerName) {
+        this.name = name;
+        this.address = address;
+        this.rating = rating;
+        this.ownerName = ownerName;
     }
 
     public long getId() {
