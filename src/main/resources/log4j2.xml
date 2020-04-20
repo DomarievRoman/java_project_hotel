@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<xml status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} [%class{1}:%L] - %msg %xEx{short}%n"/>
+        </Console>
+        <File name="File" fileName="D:\\Java Projects\\hotel_project\\logFiles\\logs.log">
+            <PatternLayout pattern="[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} [%class{1}:%L] - %msg %xEx{short}%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</xml>
