@@ -2,10 +2,10 @@ package com.domariev.controller.dao;
 
 import com.domariev.controller.dao.exception.DAOException;
 import com.domariev.model.Hotel;
-import javafx.beans.property.ReadOnlySetProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,10 @@ public class HotelDAOImpl extends DBConnector implements HotelDAO {
             "id = ?";
     private static final String DELETE_FROM_HOTEL = "DELETE FROM hotel WHERE id = ?";
 
-    private static final Logger log = LogManager.getLogger(DBTable.class);
+    private static final Logger log = LogManager.getLogger(HotelDAOImpl.class);
+
+    public HotelDAOImpl() throws DAOException, IOException {
+    }
 
     @Override
     public void add(Hotel hotel) throws DAOException {
