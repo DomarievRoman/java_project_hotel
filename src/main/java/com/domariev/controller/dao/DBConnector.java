@@ -20,7 +20,24 @@ public class DBConnector {
 
     private static final Logger log = LogManager.getLogger(DBConnector.class);
 
-    public DBConnector() throws IOException, DAOException {
+    public DBConnector() {
+
+    }
+
+    public Connection getConnection() throws DAOException {
+        Connection connection = null;
+        try {
+            Class.forName(DB_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            log.info("Connection success");
+        } catch (ClassNotFoundException | SQLException e) {
+            log.info("Connection is not success");
+            throw new DAOException("Cannot get connection", e);
+        }
+        return connection;
+    }
+
+    public void createTables() throws DAOException, IOException {
         Connection connection = getConnection();
         Statement statement = null;
         try {
@@ -38,19 +55,6 @@ public class DBConnector {
             closeStatementConnection(statement, connection);
         }
         initTables();
-    }
-
-    public Connection getConnection() throws DAOException {
-        Connection connection = null;
-        try {
-            Class.forName(DB_DRIVER);
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            log.info("Connection success");
-        } catch (ClassNotFoundException | SQLException e) {
-            log.info("Connection is not success");
-            throw new DAOException("Cannot get connection", e);
-        }
-        return connection;
     }
 
     public void initTables() throws DAOException, IOException {
