@@ -1,0 +1,33 @@
+.number_col {
+    width: 70px;
+}
+
+.navbar {
+    background-color: rgba(75, 83, 255, 0.75);
+    color: white;
+}
+
+.table {
+    width: 80%;
+    margin: auto;
+}
+
+.display-4 {
+    display: inline-block;
+    padding-left: 30%;
+}
+
+img {
+    height: 23px;
+    width: 23px;
+
+}
+
+.button:active {
+    width: 20px;
+    height: 20px;
+}
+
+.btn{
+    margin-left: 10%;
+}
