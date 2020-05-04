@@ -30,21 +30,19 @@
         <div class="card-body">
             <h1 class="card-title">Add Hotel</h1>
             <form action="${pageContext.request.contextPath}/MainServlet?action=add_hotel" method="post">
-                <input type="hidden" name="id" value="<c:out value='${hotel.id}'/>"/>
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" value="<c:out value='${hotel.name}'/>" class="form-control" name="name" placeholder="Enter hotel name">
+                    <input type="text" class="form-control" name="name" placeholder="Enter hotel name">
                 </div>
                 <div class="form-group">
                     <label>Address</label>
-                    <input type="text" value="<c:out value='${hotel.address}'/>" class="form-control"
+                    <input type="text" class="form-control"
                            name="address" placeholder="Enter hotel address">
                 </div>
                 <div class="form-group">
                     <label>Amount of stars</label>
                     <select class="form-control" name="rating">
-                        <option selected><c:out value='${hotel.rating}'/></option>
-                        <option value="" selected disabled>Stars</option>
+                        <option selected disabled>Stars</option>
                         <option id="1">1</option>
                         <option id="2">2</option>
                         <option id="3">3</option>
@@ -54,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label>Director</label>
-                    <input type="text" value="<c:out value='${hotel.ownerName}' />" class="form-control"
+                    <input type="text" class="form-control"
                            name="ownerName" placeholder="Director name">
                 </div>
                 <button type="submit" class="btn btn-outline-success">Submit</button>

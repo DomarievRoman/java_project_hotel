@@ -30,12 +30,6 @@
         <div class="card-body">
             <h1 class="card-title">Edit Hotel</h1>
             <form action="${pageContext.request.contextPath}/MainServlet?action=update_hotel" method="post">
-                <%--                <c:if test="${hotel == null}">
-                                <form action="insert" method="post">
-                                    </c:if>--%>
-                <%--                            <c:if test="${hotel == null}">
-                                                Add New User
-                                            </c:if>--%>
                 <input type="hidden" name="id" value="<c:out value='${hotel.id}'/>"/>
                 <div class="form-group">
                     <label>Name</label>
