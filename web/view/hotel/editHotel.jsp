@@ -11,6 +11,15 @@
     <style>
         <%@include file="/resources/editHotel.css"%>
     </style>
+    <script>
+        function validEnter() {
+            if (document.editForm.name.value === "" || document.editForm.address.value === "" || document.editForm.ownerName.value === "") {
+                alert("Enter all fields!");
+                document.editForm.name.focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -29,15 +38,19 @@
     <div class="card">
         <div class="card-body">
             <h1 class="card-title">Edit Hotel</h1>
-            <form action="${pageContext.request.contextPath}/MainServlet?action=update_hotel" method="post">
+            <form action="${pageContext.request.contextPath}/MainServlet?action=update_hotel" method="post"
+                  name="editForm" onsubmit="return validEnter();">
                 <input type="hidden" name="id" value="<c:out value='${hotel.id}'/>"/>
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" value="<c:out value='${hotel.name}'/>" class="form-control" name="name">
+                    <input type="text" value="<c:out value='${hotel.name}'/>" placeholder="Enter hotel name"
+                           class="form-control"
+                           name="name">
                 </div>
                 <div class="form-group">
                     <label>Address</label>
-                    <input type="text" value="<c:out value='${hotel.address}'/>" class="form-control"
+                    <input type="text" value="<c:out value='${hotel.address}'/>" placeholder="Enter hotel address"
+                           class="form-control"
                            name="address"/>
                 </div>
                 <div class="form-group">
@@ -53,7 +66,8 @@
                 </div>
                 <div class="form-group">
                     <label>Director</label>
-                    <input type="text" value="<c:out value='${hotel.ownerName}' />" class="form-control"
+                    <input type="text" value="<c:out value='${hotel.ownerName}' />" placeholder="Director name"
+                           class="form-control"
                            name="ownerName">
                 </div>
                 <button type="submit" class="btn btn-outline-success">Submit</button>

@@ -11,6 +11,15 @@
     <style>
         <%@include file="/resources/editHotel.css"%>
     </style>
+    <script>
+        function validEnter() {
+            if (document.addForm.name.value === "" || document.addForm.address.value === "" || document.addForm.ownerName.value === "") {
+                alert("Enter all fields!");
+                document.addForm.name.focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -29,7 +38,8 @@
     <div class="card">
         <div class="card-body">
             <h1 class="card-title">Add Hotel</h1>
-            <form action="${pageContext.request.contextPath}/MainServlet?action=add_hotel" method="post">
+            <form action="${pageContext.request.contextPath}/MainServlet?action=add_hotel" method="post" name="addForm"
+                  onsubmit="return validEnter();">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="name" placeholder="Enter hotel name">

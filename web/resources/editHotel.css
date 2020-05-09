@@ -2,3 +2,39 @@
     background-color: rgba(75, 83, 255, 0.75);
     color: white;
 }
+
+.container input[name="name"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/icon_hotel.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="address"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/icon_address.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="ownerName"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/icon_director.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container select[name="rating"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/icon_star.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[type=text] {
+    padding: 10px 10px 10px 30px;
+}
+
+.container select {
+    padding: 1px 1px 1px 26px;
+}
