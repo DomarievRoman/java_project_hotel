@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class HotelListCommand implements Command {
-    private static final Logger log = LogManager.getLogger(HotelDAOImpl.class);
+    private static final Logger log = LogManager.getLogger(HotelListCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DAOException {

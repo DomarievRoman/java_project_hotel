@@ -1,0 +1,91 @@
+.hotel_header {
+    background-color: rgba(75, 83, 255, 0.75);
+    color: white;
+}
+
+.room_header {
+    background-color: rgba(255, 205, 36, 0.75);
+    color: white;
+}
+
+.container input[name="name"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/hotel/hotels_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="address"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/hotel/address_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="ownerName"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/hotel/director_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container select[name="rating"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/hotel/star_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="roomType"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/room/type_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="amountOfSleepingPlaces"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/room/bed_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="floor"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/room/floor_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="available"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/room/available_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="price"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/room/price_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="hotel"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/hotel/hotels_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[type=text] {
+    padding: 10px 10px 10px 30px;
+}
+
+.container input[type=number] {
+    padding: 10px 10px 10px 30px;
+}
+
+.container select {
+    padding: 1px 1px 1px 26px;
+}

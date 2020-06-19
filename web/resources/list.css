@@ -2,8 +2,13 @@
     width: 70px;
 }
 
-.navbar {
+.hotel_header {
     background-color: rgba(75, 83, 255, 0.75);
+    color: white;
+}
+
+.room_header {
+    background-color: rgba(255, 205, 36, 0.75);
     color: white;
 }
 
@@ -20,7 +25,11 @@
 img {
     height: 23px;
     width: 23px;
+}
 
+#hotel_rooms {
+    height: 26px;
+    width: 26px;
 }
 
 .button:active {
@@ -28,6 +37,6 @@ img {
     height: 20px;
 }
 
-.btn{
+.btn {
     margin-left: 10%;
 }

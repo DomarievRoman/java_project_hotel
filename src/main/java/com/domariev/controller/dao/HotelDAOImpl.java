@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelDAOImpl extends DBConnector implements HotelDAO {
+public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
     private static final String INSERT_INTO_HOTEL = "INSERT INTO hotel(name, address, rating, ownerName) VALUES" +
             "(?, ?, ?, ?)";
     private static final String SELECT_ALL_FROM_HOTELS = "SELECT * FROM hotel";
@@ -67,14 +67,7 @@ public class HotelDAOImpl extends DBConnector implements HotelDAO {
                     log.debug("Hotel " + "\"" + hotel.getName() + "\"" + " gotten");
                 }
             } finally {
-                if (rSet != null) {
-                    try {
-                        rSet.close();
-                        log.info("ResultSet closed");
-                    } catch (SQLException e) {
-                        log.error("Cannot close resultSet", e);
-                    }
-                }
+                closeResultSet(rSet);
             }
         } catch (SQLException e) {
             log.error("Error during get all hotel's records from DB", e);
@@ -121,14 +114,7 @@ public class HotelDAOImpl extends DBConnector implements HotelDAO {
                     log.debug("Hotel " + "with id " + hotel.getId() + " gotten");
                 }
             } finally {
-                if (rSet != null) {
-                    try {
-                        rSet.close();
-                        log.info("ResultSet closed");
-                    } catch (SQLException e) {
-                        log.error("Cannot close resultSet", e);
-                    }
-                }
+                closeResultSet(rSet);
             }
         } catch (SQLException e) {
             log.error("Error during get hotel's record by ID from DB", e);
@@ -196,6 +182,17 @@ public class HotelDAOImpl extends DBConnector implements HotelDAO {
                 log.info("Connection closed");
             } catch (SQLException e) {
                 log.error("Cannot close connection", e);
+            }
+        }
+    }
+
+    private void closeResultSet(ResultSet rSet) {
+        if (rSet != null) {
+            try {
+                rSet.close();
+                log.info("ResultSet closed");
+            } catch (SQLException e) {
+                log.error("Cannot close resultSet", e);
             }
         }
     }

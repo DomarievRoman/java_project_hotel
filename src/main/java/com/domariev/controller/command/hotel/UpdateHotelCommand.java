@@ -5,15 +5,12 @@ import com.domariev.controller.command.service.Url;
 import com.domariev.controller.dao.HotelDAOImpl;
 import com.domariev.controller.dao.exception.DAOException;
 import com.domariev.model.Hotel;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class EditHotelCommand implements Command {
-    private static final Logger log = LogManager.getLogger(EditHotelCommand.class);
+public class UpdateHotelCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DAOException {

@@ -8,16 +8,22 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <style>
-        <%@include file="/resources/hotelList.css"%>
+        <%@include file="/resources/list.css"%>
     </style>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand">HOTEL MANAGER</a>
-    </nav>
+    <div class="hotel_header">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand">HOTEL MANAGER</a>
+            <a class="nav-link" style="color: white"
+               href="<%=request.getContextPath()%>/MainServlet?action=open_room_list">Room list</a>
+        </nav>
+    </div>
 </header>
-<a href="<%=request.getContextPath()%>/MainServlet?action=open_add_hotel_tab"><button type="button" class="btn btn-outline-dark btn-md">Add Hotel</button></a>
+<a href="<%=request.getContextPath()%>/MainServlet?action=open_add_hotel_tab">
+    <button type="button" class="btn btn-outline-dark btn-md">Add Hotel</button>
+</a>
 <h1 class="display-4">List</h1>
 <table class="table table-bordered table-hover">
     <thead>
@@ -38,10 +44,14 @@
         <td>${hotel.address}</td>
         <td>${hotel.rating}</td>
         <td>${hotel.ownerName}</td>
-        <td><a href="MainServlet?action=edit_list&id=<c:out value = "${hotel.id}"/>"><img class="button"
-                                                                                          src=${pageContext.request.contextPath}/resources/img/edit.png></a>
-            <a href="MainServlet?action=delete_list&id=<c:out value = "${hotel.id}"/>"><img class="button"
-                                                                                            src=${pageContext.request.contextPath}/resources/img/delete.png></a>
+        <td><a title="Edit" href="MainServlet?action=edit_hotel&id=<c:out value = "${hotel.id}"/>"><img class="button"
+                                                                                                        src=${pageContext.request.contextPath}/resources/img/edit.png></a>
+            <a title="Delete" href="MainServlet?action=delete_hotel&id=<c:out value = "${hotel.id}"/>"><img
+                    class="button"
+                    src=${pageContext.request.contextPath}/resources/img/delete.png></a>
+            <a title="Hotel's rooms" href="MainServlet?action=show_rooms&hotel=<c:out value = "${hotel.id}"/>"><img
+                    class="button" id="hotel_rooms"
+                    src=${pageContext.request.contextPath}/resources/img/hotel/room_icon.png></a>
         </td>
     </tr>
     </c:forEach>
