@@ -4,8 +4,8 @@ INSERT INTO employee(nameSurname, profession, salary, hotelId) VALUES ('Yura Mor
 INSERT INTO employee(nameSurname, profession, salary, hotelId) VALUES ('Nazar Martynyshyn', 'Waiter' ,1000, 1);
 INSERT INTO employee(nameSurname, profession, salary, hotelId) VALUES ('Vladyslav Kulyaka', 'Cleaner' ,500, 1);
 INSERT INTO employee(nameSurname, profession, salary, hotelId) VALUES ('Natalia Koval', 'Hostess' ,900, 2);
-INSERT INTO room(roomType, amountOfSleepingPlaces, floor, isAvailable, price, hotelId) VALUES('Lux', 5, 11, true, 5000, 1);
-INSERT INTO room(roomType, amountOfSleepingPlaces, floor, isAvailable, price, hotelId) VALUES('Semi-Lux', 3, 10, false, 3500, 2);
-INSERT INTO room(roomType, amountOfSleepingPlaces, floor, isAvailable, price, hotelId) VALUES('Apartment', 4, 2, true, 4000, 2);
-INSERT INTO room(roomType, amountOfSleepingPlaces, floor, isAvailable, price, hotelId) VALUES('Single', 1, 5, true, 800, 1);
-INSERT INTO room(roomType, amountOfSleepingPlaces, floor, isAvailable, price, hotelId) VALUES('Triple', 3, 1, false, 2000, 1);
+INSERT INTO room(roomType, amountOfSleepingPlaces, floor, available, price, hotel) VALUES('Lux', 5, 11, 1, 5000, 1);
+INSERT INTO room(roomType, amountOfSleepingPlaces, floor, available, price, hotel) VALUES('Semi-Lux', 3, 10, 0, 3500, 2);
+INSERT INTO room(roomType, amountOfSleepingPlaces, floor, available, price, hotel) VALUES('Apartment', 4, 2, 1, 4000, 2);
+INSERT INTO room(roomType, amountOfSleepingPlaces, floor, available, price, hotel) VALUES('Single', 1, 5, 1, 800, 1);
+INSERT INTO room(roomType, amountOfSleepingPlaces, floor, available, price, hotel) VALUES('Triple', 3, 1, 0, 2000, 1);

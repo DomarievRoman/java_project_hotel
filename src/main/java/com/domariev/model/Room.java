@@ -3,34 +3,44 @@ package com.domariev.model;
 import java.util.Objects;
 
 public class Room {
-    private long roomId;
+    private long id;
     private String roomType;
     private int amountOfSleepingPlaces;
     private int floor;
-    private boolean isAvailable;
+    private boolean available;
     private int price;
-    private long hotelId;
-
-    public Room(long roomId, String roomType, int amountOfSleepingPlaces, int floor, boolean isAvailable, int price, long hotelId) {
-        this.roomId = roomId;
-        this.roomType = roomType;
-        this.amountOfSleepingPlaces = amountOfSleepingPlaces;
-        this.floor = floor;
-        this.isAvailable = isAvailable;
-        this.price = price;
-        this.hotelId = hotelId;
-    }
+    private long hotel;
 
     public Room() {
 
     }
 
-    public long getRoomId() {
-        return roomId;
+    public Room(long id, String roomType, int amountOfSleepingPlaces, int floor, boolean available, int price, long hotel) {
+        this.id = id;
+        this.roomType = roomType;
+        this.amountOfSleepingPlaces = amountOfSleepingPlaces;
+        this.floor = floor;
+        this.available = available;
+        this.price = price;
+        this.hotel = hotel;
     }
 
-    public void setRoomId(long roomId) {
-        this.roomId = roomId;
+    public Room(String roomType, int amountOfSleepingPlaces, int floor, boolean available, int price, long hotel) {
+        this.roomType = roomType;
+        this.amountOfSleepingPlaces = amountOfSleepingPlaces;
+        this.floor = floor;
+        this.available = available;
+        this.price = price;
+        this.hotel = hotel;
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getRoomType() {
@@ -57,12 +67,12 @@ public class Room {
         this.floor = floor;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public boolean getAvailable() {
+        return available;
     }
 
     public void setAvailable(boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     public int getPrice() {
@@ -73,12 +83,12 @@ public class Room {
         this.price = price;
     }
 
-    public long getHotelId() {
-        return hotelId;
+    public long getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(long hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(long hotel) {
+        this.hotel = hotel;
     }
 
     @Override
@@ -86,30 +96,30 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return roomId == room.roomId &&
+        return id == room.id &&
                 amountOfSleepingPlaces == room.amountOfSleepingPlaces &&
                 floor == room.floor &&
-                isAvailable == room.isAvailable &&
+                available == room.available &&
                 price == room.price &&
-                hotelId == room.hotelId &&
+                hotel == room.hotel &&
                 Objects.equals(roomType, room.roomType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roomId, roomType, amountOfSleepingPlaces, floor, isAvailable, price, hotelId);
+        return Objects.hash(id, roomType, amountOfSleepingPlaces, floor, available, price, hotel);
     }
 
     @Override
     public String toString() {
         return "Room{" +
-                "roomId=" + roomId +
+                "roomId=" + id +
                 ", roomType='" + roomType + '\'' +
                 ", amountOfSleepingPlaces=" + amountOfSleepingPlaces +
                 ", floor=" + floor +
-                ", isAvailable=" + isAvailable +
+                ", isAvailable=" + available +
                 ", price=" + price +
-                ", hotelId=" + hotelId +
+                ", hotelId=" + hotel +
                 '}';
     }
 }
