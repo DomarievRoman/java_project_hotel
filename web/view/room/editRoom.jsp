@@ -13,9 +13,9 @@
     </style>
     <script>
         function validEnter() {
-            if (document.editForm.roomType.value === "" || document.editForm.amountOfSleepingPlaces.value === "" || document.editForm.hotelId.value === "") {
+            if (document.editForm.roomType.value === "" || document.editForm.amountOfSleepingPlaces.value === "" || document.editForm.hotel.value === "") {
                 alert("Enter all fields!");
-                document.editForm.name.focus();
+                document.editForm.roomType.focus();
                 return false;
             }
         }

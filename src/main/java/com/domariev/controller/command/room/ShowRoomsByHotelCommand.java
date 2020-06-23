@@ -18,6 +18,6 @@ public class ShowRoomsByHotelCommand implements Command {
         long hotelFk = Long.parseLong(request.getParameter("hotel"));
         List<Room> room = roomDAO.getByForeignKey(hotelFk);
         request.setAttribute("list", room);
-        return Url.ROOMS_IN_HOTEL;
+        return Url.ROOM_LIST;
     }
 }
