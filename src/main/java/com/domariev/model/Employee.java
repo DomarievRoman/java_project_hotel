@@ -3,29 +3,36 @@ package com.domariev.model;
 import java.util.Objects;
 
 public class Employee {
-    private long employeeId;
+    private long id;
     private String nameSurname;
     private String profession;
     private int salary;
-    private long hotelId;
-
-    public Employee(long employeeId, String nameSurname, String profession, int salary, long hotelId) {
-        this.employeeId = employeeId;
-        this.nameSurname = nameSurname;
-        this.profession = profession;
-        this.salary = salary;
-        this.hotelId = hotelId;
-    }
+    private long hotel;
 
     public Employee() {
     }
 
-    public long getEmployeeId() {
-        return employeeId;
+    public Employee(long id, String nameSurname, String profession, int salary, long hotel) {
+        this.id = id;
+        this.nameSurname = nameSurname;
+        this.profession = profession;
+        this.salary = salary;
+        this.hotel = hotel;
     }
 
-    public void setEmployeeId(long employeeId) {
-        this.employeeId = employeeId;
+    public Employee(String nameSurname, String profession, int salary, long hotel) {
+        this.nameSurname = nameSurname;
+        this.profession = profession;
+        this.salary = salary;
+        this.hotel = hotel;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNameSurname() {
@@ -52,12 +59,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public long getHotelId() {
-        return hotelId;
+    public long getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(long hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(long hotel) {
+        this.hotel = hotel;
     }
 
     @Override
@@ -65,26 +72,26 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return employeeId == employee.employeeId &&
+        return id == employee.id &&
                 salary == employee.salary &&
-                hotelId == employee.hotelId &&
+                hotel == employee.hotel &&
                 Objects.equals(nameSurname, employee.nameSurname) &&
                 Objects.equals(profession, employee.profession);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employeeId, nameSurname, profession, salary, hotelId);
+        return Objects.hash(id, nameSurname, profession, salary, hotel);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "employeeId=" + employeeId +
+                "employeeId=" + id +
                 ", nameSurname='" + nameSurname + '\'' +
                 ", profession='" + profession + '\'' +
                 ", salary=" + salary +
-                ", hotelId=" + hotelId +
+                ", hotelId=" + hotel +
                 '}';
     }
 }

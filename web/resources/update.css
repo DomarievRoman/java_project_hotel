@@ -8,6 +8,11 @@
     color: white;
 }
 
+.employee_header {
+    background-color: rgba(255, 44, 42, 0.75);
+    color: white;
+}
+
 .container input[name="name"] {
     background-image: url("${pageContext.request.contextPath}/resources/img/hotel/hotels_icon.png");
     background-position: 4px;
@@ -73,6 +78,27 @@
 
 .container input[name="hotel"] {
     background-image: url("${pageContext.request.contextPath}/resources/img/hotel/hotels_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="nameSurname"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/employee/nameSurname_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="profession"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/employee/profession_icon.png");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+}
+
+.container input[name="salary"] {
+    background-image: url("${pageContext.request.contextPath}/resources/img/employee/salary_icon.png");
     background-position: 4px;
     background-repeat: no-repeat;
     background-size: 22px;

@@ -1,10 +1,14 @@
 package com.domariev.controller.command.service;
 
+import com.domariev.controller.command.employee.*;
 import com.domariev.controller.command.hotel.*;
 import com.domariev.controller.command.room.*;
 
 public enum CommandEnum {
     OPEN_HOTEL_LIST {{
+        this.command = new HotelListCommand();
+    }},
+    OPEN_LIST {{
         this.command = new HotelListCommand();
     }},
     DELETE_HOTEL {{
@@ -42,6 +46,27 @@ public enum CommandEnum {
     }},
     SHOW_ROOMS {{
         this.command = new ShowRoomsByHotelCommand();
+    }},
+    OPEN_EMPLOYEE_LIST {{
+        this.command = new EmployeeListCommand();
+    }},
+    DELETE_EMPLOYEE {{
+        this.command = new DeleteEmployeeCommand();
+    }},
+    EDIT_EMPLOYEE {{
+        this.command = new GetEmployeeByIdCommand();
+    }},
+    UPDATE_EMPLOYEE {{
+        this.command = new UpdateEmployeeCommand();
+    }},
+    ADD_EMPLOYEE {{
+        this.command = new AddEmployeeCommand();
+    }},
+    OPEN_ADD_EMPLOYEE_TAB {{
+        this.command = new OpenAddEmployeeTabCommand();
+    }},
+    SHOW_EMPLOYEES {{
+        this.command = new ShowEmployeesByHotelCommand();
     }};
 
     Command command;

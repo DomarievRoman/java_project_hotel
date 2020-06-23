@@ -12,6 +12,11 @@
     color: white;
 }
 
+.employee_header {
+    background-color: rgba(255, 44, 42, 0.75);
+    color: white;
+}
+
 .table {
     width: 80%;
     margin: auto;
@@ -23,13 +28,8 @@
 }
 
 img {
-    height: 23px;
-    width: 23px;
-}
-
-#hotel_rooms {
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .button:active {

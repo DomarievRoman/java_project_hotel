@@ -17,7 +17,9 @@
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand">HOTEL MANAGER</a>
             <a class="nav-link" style="color: white"
-               href="<%=request.getContextPath()%>/MainServlet?action=open_room_list">Room list</a>
+               href="<%=request.getContextPath()%>/MainServlet?action=open_room_list">ROOMS</a>
+            <a class="nav-link" style="color: white"
+               href="<%=request.getContextPath()%>/MainServlet?action=open_employee_list">EMPLOYEES</a>
         </nav>
     </div>
 </header>
@@ -52,6 +54,9 @@
             <a title="Hotel's rooms" href="MainServlet?action=show_rooms&hotel=<c:out value = "${hotel.id}"/>"><img
                     class="button" id="hotel_rooms"
                     src=${pageContext.request.contextPath}/resources/img/hotel/room_icon.png></a>
+            <a title="Hotel's employees" href="MainServlet?action=show_employees&hotel=<c:out value = "${hotel.id}"/>"><img
+                    class="button" id="hotel_employees"
+                    src=${pageContext.request.contextPath}/resources/img/hotel/employee_icon.png></a>
         </td>
     </tr>
     </c:forEach>

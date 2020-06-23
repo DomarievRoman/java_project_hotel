@@ -10,7 +10,11 @@ public interface Url {
     String ROOM_LIST = "/view/room/roomList.jsp";
     String EDIT_ROOM = "/view/room/editRoom.jsp";
     String ADD_ROOM = "/view/room/addRoom.jsp";
-    String ROOMS_IN_HOTEL = "/view/room/roomsInHotel.jsp";
+
+    String OPEN_EMPLOYEE_LIST_ACTION = "/MainServlet?action=open_employee_list";
+    String EMPLOYEE_LIST = "/view/employee/employeeList.jsp";
+    String EDIT_EMPLOYEE = "/view/employee/editEmployee.jsp";
+    String ADD_EMPLOYEE = "/view/employee/addEmployee.jsp";
 
     String ERROR_PAGE = "/view/error.jsp";
 }
