@@ -3,8 +3,8 @@ package com.domariev.controller.servlet;
 import com.domariev.controller.command.service.Command;
 import com.domariev.controller.command.service.CommandFactory;
 import com.domariev.controller.command.service.Url;
-import com.domariev.controller.dao.DBConnector;
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.DbConnector;
+import com.domariev.controller.dao.exception.DaoException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,14 +19,14 @@ import java.io.IOException;
 
 public class MainServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private DBConnector init;
+    private DbConnector init;
 
     private static final Logger log = LogManager.getLogger(MainServlet.class);
 
 
-    public MainServlet() throws IOException, DAOException {
+    public MainServlet() throws IOException, DaoException {
         super();
-        init = new DBConnector();
+        init = new DbConnector();
         init.createTables();
     }
 
@@ -38,7 +38,7 @@ public class MainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             log.error("Cannot execute doPost method",e);
         }
     }
@@ -46,12 +46,12 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             log.error("Cannot execute doGet method",e);
         }
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DAOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DaoException {
         CommandFactory client = new CommandFactory();
         Command command = client.defineCommand(request);
         String page = command.execute(request, response);

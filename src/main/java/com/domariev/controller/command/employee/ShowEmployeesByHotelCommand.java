@@ -2,8 +2,8 @@ package com.domariev.controller.command.employee;
 
 import com.domariev.controller.command.service.Command;
 import com.domariev.controller.command.service.Url;
-import com.domariev.controller.dao.EmployeeDAOImpl;
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.EmployeeDaoImpl;
+import com.domariev.controller.dao.exception.DaoException;
 import com.domariev.model.Employee;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +13,8 @@ import java.util.List;
 
 public class ShowEmployeesByHotelCommand implements Command {
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DAOException {
-        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DaoException {
+        EmployeeDaoImpl employeeDAO = new EmployeeDaoImpl();
         long hotelFk = Long.parseLong(request.getParameter("hotel"));
         List<Employee> employee = employeeDAO.getByForeignKey(hotelFk);
         request.setAttribute("list", employee);

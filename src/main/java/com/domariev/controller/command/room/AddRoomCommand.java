@@ -2,8 +2,8 @@ package com.domariev.controller.command.room;
 
 import com.domariev.controller.command.service.Command;
 import com.domariev.controller.command.service.Url;
-import com.domariev.controller.dao.RoomDAOImpl;
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.RoomDaoImpl;
+import com.domariev.controller.dao.exception.DaoException;
 import com.domariev.model.Room;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +12,8 @@ import java.io.IOException;
 
 public class AddRoomCommand implements Command {
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DAOException {
-        RoomDAOImpl roomDAO = new RoomDAOImpl();
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DaoException {
+        RoomDaoImpl roomDAO = new RoomDaoImpl();
         String type = request.getParameter("roomType");
         int sleepingPlaces = Integer.parseInt(request.getParameter("amountOfSleepingPlaces"));
         int floor = Integer.parseInt(request.getParameter("floor"));

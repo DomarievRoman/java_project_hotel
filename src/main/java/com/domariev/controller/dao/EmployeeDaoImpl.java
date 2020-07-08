@@ -1,7 +1,7 @@
 package com.domariev.controller.dao;
 
 
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.exception.DaoException;
 import com.domariev.model.Employee;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
+public class EmployeeDaoImpl extends DbConnector implements Dao<Employee> {
     private static final String INSERT_INTO_EMPLOYEE = "INSERT INTO employee(nameSurname, profession, salary, hotel) VALUES" +
             "(?, ?, ?, ?)";
     private static final String SELECT_ALL_FROM_EMPLOYEE = "SELECT * FROM employee";
@@ -19,13 +19,13 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
     private static final String UPDATE_EMPLOYEE = "UPDATE employee SET nameSurname = ?, profession = ?, salary = ?, hotel = ? WHERE id = ?";
     private static final String DELETE_FROM_EMPLOYEE = "DELETE FROM employee WHERE id = ?";
 
-    private static final Logger log = LogManager.getLogger(EmployeeDAOImpl.class);
+    private static final Logger log = LogManager.getLogger(EmployeeDaoImpl.class);
 
-    public EmployeeDAOImpl() {
+    public EmployeeDaoImpl() {
     }
 
     @Override
-    public void add(Employee employee) throws DAOException {
+    public void add(Employee employee) throws DaoException {
         PreparedStatement prStatement = null;
         Connection connection = getConnection();
         try {
@@ -39,14 +39,14 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
             log.debug("Employee " + "№" + employee.getId() + " created");
         } catch (SQLException e) {
             log.error("Error during insert employee's record into DB", e);
-            throw new DAOException("Cannot insert record into employee table", e);
+            throw new DaoException("Cannot insert record into employee table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
     }
 
     @Override
-    public List<Employee> getAll() throws DAOException {
+    public List<Employee> getAll() throws DaoException {
         List<Employee> employeeList = new ArrayList<>();
         Connection connection = getConnection();
         Statement statement = null;
@@ -72,7 +72,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
             }
         } catch (SQLException e) {
             log.error("Error during get all employee's records from DB", e);
-            throw new DAOException("Cannot get all records from employee table", e);
+            throw new DaoException("Cannot get all records from employee table", e);
         } finally {
             if (statement != null) {
                 try {
@@ -95,7 +95,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
     }
 
     @Override
-    public Employee getById(long id) throws DAOException {
+    public Employee getById(long id) throws DaoException {
         Employee employee = null;
         PreparedStatement prStatement = null;
         ResultSet rSet = null;
@@ -119,14 +119,14 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
             }
         } catch (SQLException e) {
             log.error("Error during get employee's record by ID from DB", e);
-            throw new DAOException("Cannot get record by ID from employee table", e);
+            throw new DaoException("Cannot get record by ID from employee table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
         return employee;
     }
 
-    public List<Employee> getByForeignKey(long hotelId) throws DAOException {
+    public List<Employee> getByForeignKey(long hotelId) throws DaoException {
         List<Employee> hotelEmployee = new ArrayList<>();
         PreparedStatement prStatement = null;
         ResultSet rSet = null;
@@ -152,7 +152,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
             }
         } catch (SQLException e) {
             log.error("Error during get employee's record by foreign key from DB", e);
-            throw new DAOException("Cannot get record by foreign key from employee table", e);
+            throw new DaoException("Cannot get record by foreign key from employee table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
@@ -160,7 +160,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
     }
 
     @Override
-    public boolean update(Employee employee) throws DAOException {
+    public boolean update(Employee employee) throws DaoException {
         boolean updatedRow;
         Connection connection = getConnection();
         PreparedStatement prStatement = null;
@@ -175,7 +175,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
             log.info("Row " + "with id " + employee.getId() + " updated");
         } catch (SQLException e) {
             log.error("Error during update employee's table row", e);
-            throw new DAOException("Cannot update row from employee table", e);
+            throw new DaoException("Cannot update row from employee table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
@@ -183,7 +183,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
     }
 
     @Override
-    public boolean delete(long id) throws DAOException {
+    public boolean delete(long id) throws DaoException {
         boolean deletedRow;
         Connection connection = getConnection();
         PreparedStatement prStatement = null;
@@ -194,7 +194,7 @@ public class EmployeeDAOImpl extends DBConnector implements DAO<Employee> {
             log.debug("Row with id " + id + " deleted");
         } catch (SQLException e) {
             log.error("Error during delete employee's table row", e);
-            throw new DAOException("Cannot delete row from employee table", e);
+            throw new DaoException("Cannot delete row from employee table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }

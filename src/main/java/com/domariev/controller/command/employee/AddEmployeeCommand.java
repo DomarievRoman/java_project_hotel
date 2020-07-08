@@ -2,8 +2,8 @@ package com.domariev.controller.command.employee;
 
 import com.domariev.controller.command.service.Command;
 import com.domariev.controller.command.service.Url;
-import com.domariev.controller.dao.EmployeeDAOImpl;
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.EmployeeDaoImpl;
+import com.domariev.controller.dao.exception.DaoException;
 import com.domariev.model.Employee;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +12,8 @@ import java.io.IOException;
 
 public class AddEmployeeCommand implements Command {
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DAOException {
-        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, DaoException {
+        EmployeeDaoImpl employeeDAO = new EmployeeDaoImpl();
         String nameSurname = request.getParameter("nameSurname");
         String profession = request.getParameter("profession");
         int salary = Integer.parseInt(request.getParameter("salary"));

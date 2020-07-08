@@ -1,6 +1,6 @@
 package com.domariev.controller.dao;
 
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.exception.DaoException;
 
 import com.domariev.model.enums.Table;
 import org.apache.commons.io.IOUtils;
@@ -12,19 +12,19 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.List;
 
-public class DBConnector {
+public class DbConnector {
     public static final String DB_DRIVER = "org.h2.Driver";
     public static final String DB_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
     public static final String DB_USER = "";
     public static final String DB_PASSWORD = "";
 
-    private static final Logger log = LogManager.getLogger(DBConnector.class);
+    private static final Logger log = LogManager.getLogger(DbConnector.class);
 
-    public DBConnector() {
+    public DbConnector() {
 
     }
 
-    public Connection getConnection() throws DAOException {
+    public Connection getConnection() throws DaoException {
         Connection connection = null;
         try {
             Class.forName(DB_DRIVER);
@@ -32,12 +32,12 @@ public class DBConnector {
             log.info("Connection success");
         } catch (ClassNotFoundException | SQLException e) {
             log.info("Connection is not success");
-            throw new DAOException("Cannot get connection", e);
+            throw new DaoException("Cannot get connection", e);
         }
         return connection;
     }
 
-    public void createTables() throws DAOException, IOException {
+    public void createTables() throws DaoException, IOException {
         Connection connection = getConnection();
         Statement statement = null;
         try {
@@ -50,14 +50,14 @@ public class DBConnector {
             log.info("Tables created");
         } catch (SQLException e) {
             log.error("Error during create tables", e);
-            throw new DAOException("Cannot create tables", e);
+            throw new DaoException("Cannot create tables", e);
         } finally {
             closeStatementConnection(statement, connection);
         }
         initTables();
     }
 
-    public void initTables() throws DAOException, IOException {
+    public void initTables() throws DaoException, IOException {
         Connection connection = getConnection();
         Statement statement = null;
         InputStream inputStream = getClass()
@@ -73,7 +73,7 @@ public class DBConnector {
             log.info("Data inserted into tables");
         } catch (SQLException e) {
             log.error("Error during tables initializing", e);
-            throw new DAOException("Cannot initialize tables", e);
+            throw new DaoException("Cannot initialize tables", e);
         } finally {
             closeStatementConnection(statement, connection);
         }

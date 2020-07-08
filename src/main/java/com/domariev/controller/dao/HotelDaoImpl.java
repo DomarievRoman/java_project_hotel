@@ -1,6 +1,6 @@
 package com.domariev.controller.dao;
 
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.exception.DaoException;
 import com.domariev.model.Hotel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
+public class HotelDaoImpl extends DbConnector implements Dao<Hotel> {
     private static final String INSERT_INTO_HOTEL = "INSERT INTO hotel(name, address, rating, ownerName) VALUES" +
             "(?, ?, ?, ?)";
     private static final String SELECT_ALL_FROM_HOTELS = "SELECT * FROM hotel";
@@ -18,13 +18,13 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
     private static final String UPDATE_HOTEL = "UPDATE hotel SET name = ?, address = ?, rating = ?, ownerName = ? WHERE id = ?";
     private static final String DELETE_FROM_HOTEL = "DELETE FROM hotel WHERE id = ?";
 
-    private static final Logger log = LogManager.getLogger(HotelDAOImpl.class);
+    private static final Logger log = LogManager.getLogger(HotelDaoImpl.class);
 
-    public HotelDAOImpl() throws DAOException, IOException {
+    public HotelDaoImpl() throws DaoException, IOException {
     }
 
     @Override
-    public void add(Hotel hotel) throws DAOException {
+    public void add(Hotel hotel) throws DaoException {
         PreparedStatement prStatement = null;
         Connection connection = getConnection();
         try {
@@ -38,14 +38,14 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
             log.debug("Hotel " + "\"" + hotel.getName() + "\"" + " created");
         } catch (SQLException e) {
             log.error("Error during insert hotel's record into DB", e);
-            throw new DAOException("Cannot insert record into hotel table", e);
+            throw new DaoException("Cannot insert record into hotel table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
     }
 
     @Override
-    public List<Hotel> getAll() throws DAOException {
+    public List<Hotel> getAll() throws DaoException {
         List<Hotel> hotelList = new ArrayList<>();
         Connection connection = getConnection();
         Statement statement = null;
@@ -71,7 +71,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
             }
         } catch (SQLException e) {
             log.error("Error during get all hotel's records from DB", e);
-            throw new DAOException("Cannot get all records from table hotel", e);
+            throw new DaoException("Cannot get all records from table hotel", e);
         } finally {
             if (statement != null) {
                 try {
@@ -94,7 +94,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
     }
 
     @Override
-    public Hotel getById(long id) throws DAOException {
+    public Hotel getById(long id) throws DaoException {
         Hotel hotel = null;
         PreparedStatement prStatement = null;
         ResultSet rSet = null;
@@ -118,7 +118,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
             }
         } catch (SQLException e) {
             log.error("Error during get hotel's record by ID from DB", e);
-            throw new DAOException("Cannot get record by ID from table hotel", e);
+            throw new DaoException("Cannot get record by ID from table hotel", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
@@ -126,7 +126,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
     }
 
     @Override
-    public boolean update(Hotel hotel) throws DAOException {
+    public boolean update(Hotel hotel) throws DaoException {
         boolean updatedRow;
         Connection connection = getConnection();
         PreparedStatement prStatement = null;
@@ -141,7 +141,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
             log.info("Row " + "with id " + hotel.getId() + " updated");
         } catch (SQLException e) {
             log.error("Error during update hotel's table row", e);
-            throw new DAOException("Cannot update row from table hotel", e);
+            throw new DaoException("Cannot update row from table hotel", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
@@ -149,7 +149,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
     }
 
     @Override
-    public boolean delete(long id) throws DAOException {
+    public boolean delete(long id) throws DaoException {
         boolean deletedRow;
         Connection connection = getConnection();
         PreparedStatement prStatement = null;
@@ -160,7 +160,7 @@ public class HotelDAOImpl extends DBConnector implements DAO<Hotel> {
             log.debug("Row with id " + id + " deleted");
         } catch (SQLException e) {
             log.error("Error during delete hotel's table row", e);
-            throw new DAOException("Cannot delete row from table hotel", e);
+            throw new DaoException("Cannot delete row from table hotel", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }

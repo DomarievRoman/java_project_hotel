@@ -1,6 +1,6 @@
 package com.domariev.controller.dao;
 
-import com.domariev.controller.dao.exception.DAOException;
+import com.domariev.controller.dao.exception.DaoException;
 import com.domariev.model.Room;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomDAOImpl extends DBConnector implements DAO<Room> {
+public class RoomDaoImpl extends DbConnector implements Dao<Room> {
     private static final String INSERT_INTO_ROOM = "INSERT INTO room(roomType, amountOfSleepingPlaces, floor, available, price, hotel) VALUES" +
             "(?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_FROM_ROOM = "SELECT * FROM room";
@@ -18,13 +18,13 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
     private static final String UPDATE_ROOM = "UPDATE room SET roomType = ?, amountOfSleepingPlaces = ?, floor = ?, available = ?, price=?, hotel = ? WHERE id = ?";
     private static final String DELETE_FROM_ROOM = "DELETE FROM room WHERE id = ?";
 
-    private static final Logger log = LogManager.getLogger(RoomDAOImpl.class);
+    private static final Logger log = LogManager.getLogger(RoomDaoImpl.class);
 
-    public RoomDAOImpl() throws DAOException {
+    public RoomDaoImpl() throws DaoException {
     }
 
     @Override
-    public void add(Room room) throws DAOException {
+    public void add(Room room) throws DaoException {
         PreparedStatement prStatement = null;
         Connection connection = getConnection();
         try {
@@ -40,14 +40,14 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
             log.debug("Room " + "№" + room.getId() + " created");
         } catch (SQLException e) {
             log.error("Error during insert room's record into DB", e);
-            throw new DAOException("Cannot insert record into room table", e);
+            throw new DaoException("Cannot insert record into room table", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
     }
 
     @Override
-    public List<Room> getAll() throws DAOException {
+    public List<Room> getAll() throws DaoException {
         List<Room> roomList = new ArrayList<>();
         Connection connection = getConnection();
         Statement statement = null;
@@ -75,7 +75,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
             }
         } catch (SQLException e) {
             log.error("Error during get all room's records from DB", e);
-            throw new DAOException("Cannot get all records from room hotel", e);
+            throw new DaoException("Cannot get all records from room hotel", e);
         } finally {
             if (statement != null) {
                 try {
@@ -98,7 +98,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
     }
 
     @Override
-    public Room getById(long id) throws DAOException {
+    public Room getById(long id) throws DaoException {
         Room room = null;
         PreparedStatement prStatement = null;
         ResultSet rSet = null;
@@ -124,14 +124,14 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
             }
         } catch (SQLException e) {
             log.error("Error during get room's record by ID from DB", e);
-            throw new DAOException("Cannot get record by ID from table room", e);
+            throw new DaoException("Cannot get record by ID from table room", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
         return room;
     }
 
-    public List<Room> getByForeignKey(long hotelId) throws DAOException {
+    public List<Room> getByForeignKey(long hotelId) throws DaoException {
         List<Room> hotelRooms = new ArrayList<>();
         PreparedStatement prStatement = null;
         ResultSet rSet = null;
@@ -159,7 +159,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
             }
         } catch (SQLException e) {
             log.error("Error during get room's record by foreign key from DB", e);
-            throw new DAOException("Cannot get record by foreign key from table room", e);
+            throw new DaoException("Cannot get record by foreign key from table room", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
@@ -167,7 +167,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
     }
 
     @Override
-    public boolean update(Room room) throws DAOException {
+    public boolean update(Room room) throws DaoException {
         boolean updatedRow;
         Connection connection = getConnection();
         PreparedStatement prStatement = null;
@@ -184,7 +184,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
             log.info("Row " + "with id " + room.getId() + " updated");
         } catch (SQLException e) {
             log.error("Error during update room's table row", e);
-            throw new DAOException("Cannot update row from table room", e);
+            throw new DaoException("Cannot update row from table room", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
@@ -192,7 +192,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
     }
 
     @Override
-    public boolean delete(long id) throws DAOException {
+    public boolean delete(long id) throws DaoException {
         boolean deletedRow;
         Connection connection = getConnection();
         PreparedStatement prStatement = null;
@@ -203,7 +203,7 @@ public class RoomDAOImpl extends DBConnector implements DAO<Room> {
             log.debug("Row with id " + id + " deleted");
         } catch (SQLException e) {
             log.error("Error during delete room's table row", e);
-            throw new DAOException("Cannot delete row from table room", e);
+            throw new DaoException("Cannot delete row from table room", e);
         } finally {
             closePrStatementConnection(prStatement, connection);
         }
